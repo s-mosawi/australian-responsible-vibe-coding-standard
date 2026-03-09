@@ -1,0 +1,10 @@
+version: 1
+human_in_the_loop: true
+restricted_terminal_commands:
+  - rm -rf
+  - git push --force
+  - chmod 777
+  - terraform destroy
+  - database reset
+logging:
+  require_ai_commit_label: true
