@@ -1,0 +1,7 @@
+{
+  "policy_version": "1.0",
+  "policy_name": "Australian Responsible Vibe Coding Standard",
+  "human_in_the_loop": true,
+  "restricted_operations": ["rm -rf","git push --force","chmod 777","terraform destroy","database reset"],
+  "trade_secret_categories": ["algorithms","system_architecture","machine_learning_methods","data_processing","security","automation","performance","product_differentiation"]
+}
