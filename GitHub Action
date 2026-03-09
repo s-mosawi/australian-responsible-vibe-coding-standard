@@ -1,0 +1,21 @@
+name: Responsible AI Compliance Check
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check required files
+        run: |
+          for file in RESPONSIBLE_AI.md AI_AGENT_RULES.md SECURE_PROMPTING.md AI_RISK_ASSESSMENT.md TRADE_SECRET_EXTRACTION.md .ai-guardrails AI_AGENT_POLICY.json; do
+            if [ ! -f "$file" ]; then
+              echo "$file missing" 
+              exit 1
+            fi
+          done
+      - name: Detect destructive commands
+        run: |
+          if grep -r "rm -rf" .; then
+            echo "Destructive command detected"
+            exit 1
+          fi
